@@ -1,58 +1,135 @@
+/* Allgemeines Styling */
 body {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to top, #fbc2eb, #a6c1ee);
-  text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+  overflow: hidden;
+}
+
+/* Animation für Hintergrund */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 3em;
   color: #fff;
-  margin-top: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  margin: 20px 0;
   animation: fadeIn 3s ease-in-out;
 }
 
+p.message {
+  font-size: 1.5em;
+  color: #fff;
+  margin-top: -10px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+/* Sparkling Effekt */
+.sparkle-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sparkle-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.3;
+}
+
+/* Blume */
 .flower {
   position: relative;
   width: 100px;
-  height: 100px;
-  animation: spin 5s linear infinite;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 3s ease-in-out infinite;
 }
 
+/* Stängel */
+.stem {
+  position: absolute;
+  width: 10px;
+  height: 100px;
+  background: #4caf50;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+/* Blütenblätter */
 .petal {
   position: absolute;
   width: 50px;
   height: 50px;
-  background: #ff6f61;
+  background: #ff6f91;
   border-radius: 50%;
-  transform-origin: 50% 100%;
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.8);
 }
 
-.petal:nth-child(1) { transform: rotate(0deg) translate(0, -50px); }
-.petal:nth-child(2) { transform: rotate(90deg) translate(0, -50px); }
-.petal:nth-child(3) { transform: rotate(180deg) translate(0, -50px); }
-.petal:nth-child(4) { transform: rotate(270deg) translate(0, -50px); }
+.petal1 { transform: rotate(0deg) translate(0, -50px); }
+.petal2 { transform: rotate(72deg) translate(0, -50px); }
+.petal3 { transform: rotate(144deg) translate(0, -50px); }
+.petal4 { transform: rotate(216deg) translate(0, -50px); }
+.petal5 { transform: rotate(288deg) translate(0, -50px); }
 
+/* Blütenzentrum */
 .center {
   position: absolute;
   width: 30px;
   height: 30px;
   background: #ffd700;
   border-radius: 50%;
-  top: 35px;
-  left: 35px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Blätter */
+.leaf {
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  background: #76c893;
+  border-radius: 50%;
 }
 
+.leaf1 {
+  transform: rotate(-45deg);
+  bottom: 40px;
+  left: -20px;
+}
+
+.leaf2 {
+  transform: rotate(45deg);
+  bottom: 40px;
+  right: -20px;
+}
+
+/* Schwebende Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Text-Effekte */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
