@@ -5,129 +5,166 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100vh;
-  background: radial-gradient(circle at center, #b8c6db, #f5f7fa);
+  background: linear-gradient(to top, #84fab0, #8fd3f4);
   font-family: 'Arial', sans-serif;
   overflow: hidden;
 }
 
-h1 {
-  font-size: 3rem;
-  margin: 20px 0;
-  color: #ff6f61;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 3s ease-in-out;
+.birthday-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.message {
-  font-size: 1.5rem;
-  color: #333;
-  text-align: center;
-  margin-top: 10px;
+/* Wiese */
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, #4caf50, #81c784);
+  border-top: 5px solid #388e3c;
 }
 
 /* Blume */
+.flower-container {
+  position: absolute;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .flower {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  animation: bloom 5s ease-in-out infinite alternate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: sway 3s infinite ease-in-out;
 }
 
-.petals {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.petal {
-  position: absolute;
-  width: 80px;
-  height: 40px;
-  background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
-  border-radius: 50px 50px 0 0;
-  transform-origin: bottom center;
-  box-shadow: 0 5px 10px rgba(255, 182, 193, 0.5);
-  animation: sway 4s infinite ease-in-out;
-}
-
-.petal:nth-child(1) { transform: rotate(0deg); }
-.petal:nth-child(2) { transform: rotate(60deg); }
-.petal:nth-child(3) { transform: rotate(120deg); }
-.petal:nth-child(4) { transform: rotate(180deg); }
-.petal:nth-child(5) { transform: rotate(240deg); }
-.petal:nth-child(6) { transform: rotate(300deg); }
-
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle, #ffd700, #ffa500);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
-}
-
-/* Stängel */
 .stem {
-  position: absolute;
   width: 10px;
-  height: 200px;
-  background: linear-gradient(to bottom, #76c893, #4caf50);
+  height: 120px;
+  background: linear-gradient(to bottom, #388e3c, #1b5e20);
   border-radius: 5px;
-  margin: 0 auto;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: grow 5s ease-in-out infinite alternate;
 }
 
-/* Blätter */
 .leaves {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  width: 100px;
 }
 
 .leaf {
   position: absolute;
-  width: 60px;
+  width: 40px;
+  height: 20px;
+  background: #66bb6a;
+  border-radius: 30px;
+}
+
+.leaf-left {
+  transform: rotate(-30deg);
+  left: -20px;
+  top: 50px;
+}
+
+.leaf-right {
+  transform: rotate(30deg);
+  right: -20px;
+  top: 50px;
+}
+
+/* Blütenblätter */
+.petals {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.petal {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #f48fb1, #ec407a);
+  border-radius: 50%;
+  animation: float 2s infinite alternate;
+}
+
+.petal:nth-child(1) {
+  top: 0;
+  left: 25px;
+}
+
+.petal:nth-child(2) {
+  top: 25px;
+  left: 0;
+}
+
+.petal:nth-child(3) {
+  top: 25px;
+  right: 0;
+}
+
+.petal:nth-child(4) {
+  bottom: 0;
+  left: 25px;
+}
+
+.center {
+  position: absolute;
+  width: 30px;
   height: 30px;
-  background: linear-gradient(to bottom, #76c893, #4caf50);
-  border-radius: 30px 0 0 30px;
-  transform-origin: right center;
+  background: radial-gradient(circle, #ffca28, #ffa000);
+  border-radius: 50%;
+  top: 35px;
+  left: 35px;
 }
 
-.leaf:nth-child(1) {
-  transform: rotate(-30deg) translateX(-30px);
+/* Text */
+.message {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.leaf:nth-child(2) {
-  transform: rotate(30deg) translateX(30px);
+.message h1 {
+  font-size: 3rem;
+  margin: 0;
+  animation: fadeIn 3s ease-in-out;
+}
+
+.message p {
+  font-size: 1.5rem;
+  margin: 10px 0 0;
 }
 
 /* Animationen */
-@keyframes bloom {
-  0% { transform: scale(0.9); }
-  100% { transform: scale(1.1); }
-}
-
-@keyframes grow {
-  0% { height: 150px; }
-  100% { height: 200px; }
-}
-
 @keyframes sway {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(10deg); }
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
