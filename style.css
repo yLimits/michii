@@ -1,0 +1,59 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to top, #fbc2eb, #a6c1ee);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #fff;
+  margin-top: 20px;
+  animation: fadeIn 3s ease-in-out;
+}
+
+.flower {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  animation: spin 5s linear infinite;
+}
+
+.petal {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #ff6f61;
+  border-radius: 50%;
+  transform-origin: 50% 100%;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg) translate(0, -50px); }
+.petal:nth-child(2) { transform: rotate(90deg) translate(0, -50px); }
+.petal:nth-child(3) { transform: rotate(180deg) translate(0, -50px); }
+.petal:nth-child(4) { transform: rotate(270deg) translate(0, -50px); }
+
+.center {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #ffd700;
+  border-radius: 50%;
+  top: 35px;
+  left: 35px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
