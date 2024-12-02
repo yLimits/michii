@@ -13,6 +13,11 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
     }
 
     /* Headline Style */
@@ -32,38 +37,88 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    /* Flower Animation */
+    /* Flower Container */
     .flower {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-top: 50px;
+      animation: rotateFlower 8s infinite linear;
+    }
+
+    /* Flower Animation */
+    @keyframes rotateFlower {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Petals Style */
+    .petal {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background-color: #00bfff;
+      border-radius: 50%;
+      transform-origin: center;
+      animation: bloom 3s ease-in-out infinite;
+    }
+
+    .petal:nth-child(1) {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) rotate(0deg);
+      animation-delay: 0s;
+    }
+
+    .petal:nth-child(2) {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%) rotate(90deg);
+      animation-delay: 0.3s;
+    }
+
+    .petal:nth-child(3) {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) rotate(180deg);
+      animation-delay: 0.6s;
+    }
+
+    .petal:nth-child(4) {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(270deg);
+      animation-delay: 0.9s;
+    }
+
+    /* Bloom Animation */
+    @keyframes bloom {
+      0% {
+        transform: scale(0.5);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(0.5);
+      }
+    }
+
+    /* Center Circle */
+    .center {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      animation: bloom 3s infinite ease-in-out;
-    }
-
-    /* Flower Animation */
-    @keyframes bloom {
-      0% {
-        transform: scale(0.5) rotate(0deg);
-      }
-      50% {
-        transform: scale(1.2) rotate(180deg);
-      }
-      100% {
-        transform: scale(0.5) rotate(360deg);
-      }
-    }
-
-    /* Flower Style */
-    .flower img {
-      width: 150px;
-      height: auto;
-      transition: transform 0.3s ease;
-    }
-
-    /* Flower Hover Effect */
-    .flower img:hover {
-      transform: scale(1.3);
+      width: 40px;
+      height: 40px;
+      background-color: #ff69b4;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
 
     /* Cute Eyes like Stitch */
@@ -119,6 +174,7 @@
         transform: translate(-50%, -50%) scale(1);
       }
     }
+
   </style>
 </head>
 <body>
@@ -128,7 +184,11 @@
 
   <!-- Animated Flower -->
   <div class="flower">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Blue_flower.png" alt="An animated flower" />
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="center"></div>
   </div>
 
   <!-- Eyes like Stitch -->
