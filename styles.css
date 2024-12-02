@@ -1,125 +1,133 @@
-/* Allgemeines Styling */
+/* Allgemeine Stile */
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
-  font-family: 'Courier New', monospace;
-  background: radial-gradient(circle, #f5c1e6, #fcf8e8, #d0f4de);
+  background: radial-gradient(circle at center, #b8c6db, #f5f7fa);
+  font-family: 'Arial', sans-serif;
   overflow: hidden;
-  animation: bgPulse 10s infinite alternate;
-}
-
-@keyframes bgPulse {
-  0% { background: radial-gradient(circle, #f5c1e6, #fcf8e8, #d0f4de); }
-  100% { background: radial-gradient(circle, #ffd6e0, #ffe5f1, #e0fff4); }
 }
 
 h1 {
-  font-size: 3em;
-  color: #ff6b6b;
+  font-size: 3rem;
   margin: 20px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #ff6f61;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 3s ease-in-out;
 }
 
-p.message {
-  font-size: 1.5em;
+.message {
+  font-size: 1.5rem;
   color: #333;
   text-align: center;
-  margin: 10px 0;
+  margin-top: 10px;
 }
 
 /* Blume */
-.flower-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  animation: float 4s infinite ease-in-out;
-}
-
 .flower {
   position: relative;
   width: 150px;
   height: 150px;
-  animation: rotate 10s linear infinite;
+  animation: bloom 5s ease-in-out infinite alternate;
 }
 
-/* Blütenblätter */
-.flower-petal {
+.petals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.petal {
   position: absolute;
   width: 80px;
   height: 40px;
-  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
   border-radius: 50px 50px 0 0;
   transform-origin: bottom center;
   box-shadow: 0 5px 10px rgba(255, 182, 193, 0.5);
+  animation: sway 4s infinite ease-in-out;
 }
 
-.petal-1 { transform: rotate(0deg) translateY(-40px); }
-.petal-2 { transform: rotate(72deg) translateY(-40px); }
-.petal-3 { transform: rotate(144deg) translateY(-40px); }
-.petal-4 { transform: rotate(216deg) translateY(-40px); }
-.petal-5 { transform: rotate(288deg) translateY(-40px); }
+.petal:nth-child(1) { transform: rotate(0deg); }
+.petal:nth-child(2) { transform: rotate(60deg); }
+.petal:nth-child(3) { transform: rotate(120deg); }
+.petal:nth-child(4) { transform: rotate(180deg); }
+.petal:nth-child(5) { transform: rotate(240deg); }
+.petal:nth-child(6) { transform: rotate(300deg); }
 
-/* Blütenzentrum */
-.flower-center {
+.center {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle, #ffce67, #ffb347);
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #ffd700, #ffa500);
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
 }
 
 /* Stängel */
-.flower-stem {
-  position: relative;
+.stem {
+  position: absolute;
   width: 10px;
   height: 200px;
-  background: linear-gradient(180deg, #76c893, #4caf50);
+  background: linear-gradient(to bottom, #76c893, #4caf50);
   border-radius: 5px;
   margin: 0 auto;
-  animation: sway 3s infinite ease-in-out;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: grow 5s ease-in-out infinite alternate;
 }
 
 /* Blätter */
+.leaves {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .leaf {
   position: absolute;
   width: 60px;
   height: 30px;
-  background: linear-gradient(135deg, #76c893, #4caf50);
+  background: linear-gradient(to bottom, #76c893, #4caf50);
   border-radius: 30px 0 0 30px;
   transform-origin: right center;
 }
 
-.leaf-left {
-  transform: rotate(-30deg);
-  top: 50px;
-  left: -50px;
+.leaf:nth-child(1) {
+  transform: rotate(-30deg) translateX(-30px);
 }
 
-.leaf-right {
-  transform: rotate(30deg);
-  top: 100px;
-  right: -50px;
+.leaf:nth-child(2) {
+  transform: rotate(30deg) translateX(30px);
 }
 
 /* Animationen */
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes bloom {
+  0% { transform: scale(0.9); }
+  100% { transform: scale(1.1); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+@keyframes grow {
+  0% { height: 150px; }
+  100% { height: 200px; }
 }
 
 @keyframes sway {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(5deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
