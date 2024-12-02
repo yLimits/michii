@@ -14,7 +14,6 @@ body {
   overflow: hidden;
 }
 
-/* Animation für Hintergrund */
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -52,45 +51,42 @@ p.message {
   width: 100%;
   height: 100%;
   background: url('https://www.transparenttextures.com/patterns/stardust.png');
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 /* Blume */
+.flower-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
 .flower {
   position: relative;
   width: 100px;
   height: 150px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Stängel */
-.stem {
-  position: absolute;
-  width: 10px;
-  height: 100px;
-  background: #4caf50;
-  bottom: 0;
-  border-radius: 5px;
 }
 
 /* Blütenblätter */
 .petal {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: #ff6f91;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(255, 182, 193, 0.8);
+  transform-origin: bottom center;
 }
 
-.petal1 { transform: rotate(0deg) translate(0, -50px); }
-.petal2 { transform: rotate(72deg) translate(0, -50px); }
-.petal3 { transform: rotate(144deg) translate(0, -50px); }
-.petal4 { transform: rotate(216deg) translate(0, -50px); }
-.petal5 { transform: rotate(288deg) translate(0, -50px); }
+.petal1 { transform: rotate(0deg) translateY(-50px); }
+.petal2 { transform: rotate(72deg) translateY(-50px); }
+.petal3 { transform: rotate(144deg) translateY(-50px); }
+.petal4 { transform: rotate(216deg) translateY(-50px); }
 
 /* Blütenzentrum */
 .center {
@@ -102,34 +98,42 @@ p.message {
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
+/* Stängel */
+.stem {
+  width: 10px;
+  height: 100px;
+  background: #4caf50;
+  margin-top: 50px;
+  border-radius: 5px;
+}
+
 /* Blätter */
 .leaf {
   position: absolute;
-  width: 30px;
-  height: 15px;
+  width: 40px;
+  height: 20px;
   background: #76c893;
-  border-radius: 50%;
+  border-radius: 20px;
 }
 
-.leaf1 {
-  transform: rotate(-45deg);
-  bottom: 40px;
+.leaf-left {
+  transform: rotate(-30deg);
   left: -20px;
+  top: 80px;
 }
 
-.leaf2 {
-  transform: rotate(45deg);
-  bottom: 40px;
+.leaf-right {
+  transform: rotate(30deg);
   right: -20px;
+  top: 80px;
 }
 
-/* Schwebende Animation */
+/* Animation */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
-/* Text-Effekte */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
